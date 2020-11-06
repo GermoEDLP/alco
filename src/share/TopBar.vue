@@ -64,6 +64,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
+          this.$router.replace('login');
           console.log("Usuario fuera");
         })
         .catch((e) => console.log);

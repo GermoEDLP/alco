@@ -28,6 +28,11 @@ const routes = [
     component: () => import("../views/Auth/Login.vue"),
   },
   {
+    path: "/day/:id",
+    name: "day",
+    component: () => import("../views/Pages/Day.vue"),
+  },
+  {
     path: "/register",
     name: "registro",
     component: () => import("../views/Auth/Registro.vue"),
@@ -55,10 +60,7 @@ router.beforeEach((to, from, next) => {
   if (autorizacion && !user) {
     //Si la pagina requiere autorización y el usuario no esta logeado => lo lleva a login
     next({ name: 'login' });
-  } else if (!autorizacion && user) {
-    // SI no requiere autorización y esta logeado => lo lleva a home
-    next({ name: 'home' });
-  } else {
+  }  else {
     // Dos situaciones restantes los lleva a donde pretendian ir (next)
     // Si no requiere autorizacion y no esta logeado
     // Si requiere autorización y esta logueado
